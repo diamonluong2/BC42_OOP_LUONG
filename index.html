@@ -79,17 +79,33 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <!--Danh sách sản phẩm -->
-        <select
-          name=""
-          class="btn btn-success"
-          id="table-user"
-          onchange="selectTable()"
-        >
-          <option value="">Chọn loại người dùng</option>
-          <option value="DanhSachST">Danh sách học sinh</option>
-          <option value="DanhSachEP">Danh sách nhân viên</option>
-          <option value="DanhSachCS">Danh sách khách hàng</option>
-        </select>
+        <div class="row">
+          <div class="col-md-8">
+            <select
+              name=""
+              class="btn btn-success"
+              id="table-user"
+              onchange="selectTable()"
+            >
+              <option value="">Chọn loại người dùng</option>
+              <option value="DanhSachST">Danh sách học sinh</option>
+              <option value="DanhSachEP">Danh sách nhân viên</option>
+              <option value="DanhSachCS">Danh sách khách hàng</option>
+            </select>
+          </div>
+          <div class="col-md-4 pl-5">
+            <select
+              name=""
+              class="btn btn-success"
+              id="sort-name"
+              onchange="sortbyName()"
+            >
+              <option value="">Sort by</option>
+              <option value="true">Sort by name</option>
+            </select>
+          </div>
+        </div>
+
         <hr />
         <div
           role="tabpanel"
@@ -110,25 +126,6 @@
                 Thêm Mới Học Sinh
               </button>
               <!-- END BUTTON THÊM MỚI -->
-            </div>
-            <div class="col-md-4">
-              <!-- BEGIN TÌM KIẾM -->
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="txtSearch"
-                  placeholder="Nhập từ khóa"
-                  aria-label="Recipient's username"
-                  aria-describedby="basic-addon2"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2"
-                    ><i class="fa fa-search"></i
-                  ></span>
-                </div>
-              </div>
-              <!-- END TÌM KIẾM -->
             </div>
           </div>
           <div class="clear-fix"></div>
@@ -173,25 +170,6 @@
               </button>
               <!-- END BUTTON THÊM MỚI -->
             </div>
-            <div class="col-md-4">
-              <!-- BEGIN TÌM KIẾM -->
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="txtSearch1"
-                  placeholder="Nhập từ khóa"
-                  aria-label="Recipient's username"
-                  aria-describedby="basic-addon2"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon3"
-                    ><i class="fa fa-search"></i
-                  ></span>
-                </div>
-              </div>
-              <!-- END TÌM KIẾM -->
-            </div>
           </div>
           <div class="clear-fix"></div>
           <div class="tblSanPham" id="tblNhanVien">
@@ -233,25 +211,6 @@
                 Thêm Mới Khách Hàng
               </button>
               <!-- END BUTTON THÊM MỚI -->
-            </div>
-            <div class="col-md-4">
-              <!-- BEGIN TÌM KIẾM -->
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="txtSearch3"
-                  placeholder="Nhập từ khóa"
-                  aria-label="Recipient's username"
-                  aria-describedby="basic-addon2"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon4"
-                    ><i class="fa fa-search"></i
-                  ></span>
-                </div>
-              </div>
-              <!-- END TÌM KIẾM -->
             </div>
           </div>
           <div class="clear-fix"></div>

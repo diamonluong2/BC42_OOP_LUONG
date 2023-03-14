@@ -16,6 +16,17 @@ function deleteCustomer(item) {
   dsPerson2.removePerson(item);
   renderCustomer();
 }
+// Hàm sort tên;
+function sortbyName() {
+  let isName = getElement("#sort-name").value;
+  if (isName === "true") {
+    dsPerson.sortPerson();
+    renderStudent();
+  } else if (isName === "") {
+    renderStudent();
+  }
+}
+
 // Hiện ds
 function renderStudent() {
   let listST = dsPerson.persons;
@@ -189,7 +200,6 @@ function selectStudentToUpdate(studentID) {
   let selectedAccount = listST.find((student) => {
     return student.code === studentID;
   });
-  console.log("Selectedaccount,", selectedAccount.name);
   // Lấy thông tin của sinh viên tìm được để fill lên form
   getElement("#TenST").value = selectedAccount.name;
   getElement("#diachiST").value = selectedAccount.address;
