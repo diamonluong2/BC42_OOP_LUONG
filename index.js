@@ -36,6 +36,286 @@ function sortbyName() {
   }
 }
 
+function validate() {
+  // Mặc định là form hợp lệ
+  let isValid = true;
+
+  //   Kiểm tra tên điện thoại
+  let name = getElement("#TenST").value;
+  if (!name.trim()) {
+    isValid = false;
+    getElement("#tbl-name").innerHTML = "Tên không được để khoản trống";
+    getElement("#tbl-name").style.display = "inline";
+  } else {
+    getElement("#tbl-name").innerHTML = "";
+    getElement("#tbl-name").style.display = "inline";
+  }
+
+  // Kiểm tra giá tiền
+  let address = getElement("#diachiST").value;
+  if (!address.trim()) {
+    isValid = false;
+    getElement("#tbl-diachi").innerHTML = "Địa chỉ không được để khoản trống";
+    getElement("#tbl-diachi").style.display = "inline";
+  }
+
+  // Kiểm tra màn hình
+  let code = getElement("#maST").value;
+  if (!code.trim()) {
+    isValid = false;
+    getElement("#tbl-code").innerHTML = "Số thứ tự không được để khoản trống";
+    getElement("#tbl-code").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(code)) {
+    isValid = false;
+    getElement("#tbl-code").innerHTML = "Thứ tự phải là số";
+    getElement("#tbl-code").style.display = "inline";
+  } else {
+    getElement("#tbl-code").innerHTML = "";
+    getElement("#tbl-code").style.display = "inline";
+  }
+
+  let email = getElement("#emailST").value;
+  if (!email.trim()) {
+    isValid = false;
+    getElement("#tbl-email").innerHTML = "Email không được để khoản trống";
+    getElement("#tbl-email").style.display = "inline";
+  } else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email)) {
+    isValid = false;
+    getElement("#tbl-email").innerHTML = "Email phải là 1 định dạng @gmail.com";
+    getElement("#tbl-email").style.display = "inline";
+  } else {
+    getElement("#tbl-email").innerHTML = "";
+    getElement("#tbl-email").style.display = "inline";
+  }
+
+  let math = getElement("#diemToan").value;
+  if (!math.trim()) {
+    isValid = false;
+    getElement("#tbl-math").innerHTML = "Điểm toán không được để khoản trống";
+    getElement("#tbl-math").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(math)) {
+    isValid = false;
+    getElement("#tbl-math").innerHTML = "Điểm toán phải là số";
+    getElement("#tbl-math").style.display = "inline";
+  } else {
+    getElement("#tbl-math").innerHTML = "";
+    getElement("#tbl-math").style.display = "inline";
+  }
+
+  let physic = getElement("#diemLy").value;
+  if (!physic.trim()) {
+    isValid = false;
+    getElement("#tbl-physic").innerHTML = "Điểm Lý không được để khoản trống";
+    getElement("#tbl-physic").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(physic)) {
+    isValid = false;
+    getElement("#tbl-physic").innerHTML = "Điểm Lý phải là số";
+    getElement("#tbl-physic").style.display = "inline";
+  } else {
+    getElement("#tbl-physic").innerHTML = "";
+    getElement("#tbl-physic").style.display = "inline";
+  }
+
+  let chemistry = getElement("#diemHoa").value;
+  if (!chemistry.trim()) {
+    isValid = false;
+    getElement("#tbl-chemistry").innerHTML =
+      "Điểm hóa không được để khoản trống";
+    getElement("#tbl-chemistry").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(chemistry)) {
+    isValid = false;
+    getElement("#tbl-chemistry").innerHTML = "Điểm hóa phải là số";
+    getElement("#tbl-chemistry").style.display = "inline";
+  } else {
+    getElement("#tbl-chemistry").innerHTML = "";
+    getElement("#tbl-chemistry").style.display = "inline";
+  }
+
+  return isValid;
+}
+
+function validateEP() {
+  // Mặc định là form hợp lệ
+  let isValid = true;
+
+  //   Kiểm tra tên điện thoại
+  let name = getElement("#TenEP").value;
+  if (!name.trim()) {
+    isValid = false;
+    getElement("#tbl-nameEP").innerHTML = "Tên không được để khoản trống";
+    getElement("#tbl-nameEP").style.display = "inline";
+  } else {
+    getElement("#tbl-nameEP").innerHTML = "";
+    getElement("#tbl-nameEP").style.display = "inline";
+  }
+
+  // Kiểm tra giá tiền
+  let address = getElement("#diachiEP").value;
+  if (!address.trim()) {
+    isValid = false;
+    getElement("#tbl-diachiEP").innerHTML = "Địa chỉ không được để khoản trống";
+    getElement("#tbl-diachiEP").style.display = "inline";
+  } else {
+    getElement("#tbl-diachiEP").innerHTML = "";
+    getElement("#tbl-diachiEP").style.display = "inline";
+  }
+  // Kiểm tra màn hình
+  let code = getElement("#maEP").value;
+  if (!code.trim()) {
+    isValid = false;
+    getElement("#tbl-maEP").innerHTML = "Số thứ tự không được để khoản trống";
+    getElement("#tbl-maEP").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(code)) {
+    isValid = false;
+    getElement("#tbl-maEP").innerHTML = "Thứ tự phải là số";
+    getElement("#tbl-maEP").style.display = "inline";
+  } else {
+    getElement("#tbl-maEP").innerHTML = "";
+    getElement("#tbl-maEP").style.display = "inline";
+  }
+
+  let email = getElement("#emailEP").value;
+  if (!email.trim()) {
+    isValid = false;
+    getElement("#tbl-emailEP").innerHTML = "Email không được để khoản trống";
+    getElement("#tbl-emailEP").style.display = "inline";
+  } else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email)) {
+    isValid = false;
+    getElement("#tbl-emailEP").innerHTML =
+      "Email phải là 1 định dạng @gmail.com";
+    getElement("#tbl-emailEP").style.display = "inline";
+  } else {
+    getElement("#tbl-emailEP").innerHTML = "";
+    getElement("#tbl-emailEP").style.display = "inline";
+  }
+
+  let day = getElement("#count-day").value;
+  if (!day.trim()) {
+    isValid = false;
+    getElement("#tbl-count-day").innerHTML =
+      "Số ngày không được để khoản trống";
+    getElement("#tbl-count-day").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(day)) {
+    isValid = false;
+    getElement("#tbl-count-day").innerHTML = "Số ngày làm phải là số";
+    getElement("#tbl-count-day").style.display = "inline";
+  } else {
+    getElement("#tbl-count-day").innerHTML = "";
+    getElement("#tbl-count-day").style.display = "inline";
+  }
+
+  let salary = getElement("#salary-day").value;
+  if (!salary.trim()) {
+    isValid = false;
+    getElement("#tbl-salary-day").innerHTML = "Lương không được để khoản trống";
+    getElement("#tbl-salary-day").style.display = "inline";
+  } else if (!/^[1-9][0-9]{3,}$/.test(salary)) {
+    isValid = false;
+    getElement("#tbl-salary-day").innerHTML = "Lương phải là số";
+    getElement("#tbl-salary-day").style.display = "inline";
+  } else {
+    getElement("#tbl-salary-day").innerHTML = "";
+    getElement("#tbl-salary-day").style.display = "inline";
+  }
+
+  return isValid;
+}
+
+function validateCS() {
+  // Mặc định là form hợp lệ
+  let isValid = true;
+
+  //   Kiểm tra tên điện thoại
+  let name = getElement("#TenCS").value;
+  if (!name.trim()) {
+    isValid = false;
+    getElement("#tbl-TenCS").innerHTML = "Tên không được để khoản trống";
+    getElement("#tbl-TenCS").style.display = "inline";
+  } else {
+    getElement("#tbl-TenCS").innerHTML = "";
+    getElement("#tbl-TenCS").style.display = "inline";
+  }
+
+  // Kiểm tra giá tiền
+  let address = getElement("#diachiCS").value;
+  if (!address.trim()) {
+    isValid = false;
+    getElement("#tbl-diachiCS").innerHTML = "Địa chỉ không được để khoản trống";
+    getElement("#tbl-diachiCS").style.display = "inline";
+  } else {
+    getElement("#tbl-diachiCS").innerHTML = "";
+    getElement("#tbl-diachiCS").style.display = "inline";
+  }
+
+  // Kiểm tra màn hình
+  let code = getElement("#maCS").value;
+  if (!code.trim()) {
+    isValid = false;
+    getElement("#tbl-maCS").innerHTML = "Số thứ tự không được để khoản trống";
+    getElement("#tbl-maCS").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(code)) {
+    isValid = false;
+    getElement("#tbl-maCS").innerHTML = "Thứ tự phải là số";
+    getElement("#tbl-maCS").style.display = "inline";
+  } else {
+    getElement("#tbl-maCS").innerHTML = "";
+    getElement("#tbl-maCS").style.display = "inline";
+  }
+
+  let email = getElement("#emailCS").value;
+  if (!email.trim()) {
+    isValid = false;
+    getElement("#tbl-emailCS").innerHTML = "Email không được để khoản trống";
+    getElement("#tbl-emailCS").style.display = "inline";
+  } else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email)) {
+    isValid = false;
+    getElement("#tbl-emailCS").innerHTML =
+      "Email phải là 1 định dạng @gmail.com";
+    getElement("#tbl-emailCS").style.display = "inline";
+  } else {
+    getElement("#tbl-emailCS").innerHTML = "";
+    getElement("#tbl-emailCS").style.display = "inline";
+  }
+
+  let math = getElement("#tenCTY").value;
+  if (!math.trim()) {
+    isValid = false;
+    getElement("#tbl-tenCTY").innerHTML =
+      "Tên công ty không được để khoản trống";
+    getElement("#tbl-tenCTY").style.display = "inline";
+  } else {
+    getElement("#tbl-tenCTY").innerHTML = "";
+    getElement("#tbl-tenCTY").style.display = "inline";
+  }
+
+  let physic = getElement("#giaHoaDon").value;
+  if (!physic.trim()) {
+    isValid = false;
+    getElement("#tbl-giaHoaDon").innerHTML =
+      "Giá trị hóa đơn không được để khoản trống";
+    getElement("#tbl-giaHoaDon").style.display = "inline";
+  } else if (!/^(?:100|[1-9][0-9]?|0)$/.test(physic)) {
+    isValid = false;
+    getElement("#tbl-giaHoaDon").innerHTML = "Giá trị phải là số";
+    getElement("#tbl-giaHoaDon").style.display = "inline";
+  } else {
+    getElement("#tbl-giaHoaDon").innerHTML = "";
+    getElement("#tbl-giaHoaDon").style.display = "inline";
+  }
+
+  let chemistry = getElement("#danhgia").value;
+  if (!chemistry.trim()) {
+    isValid = false;
+    getElement("#tbl-danhgia").innerHTML = "Đánh giá không được để khoản trống";
+    getElement("#tbl-danhgia").style.display = "inline";
+  } else {
+    getElement("#tbl-danhgia").innerHTML = "";
+    getElement("#tbl-danhgia").style.display = "inline";
+  }
+
+  return isValid;
+}
+
 // Hiện ds
 function renderStudent() {
   let listST = dsPerson.persons;
@@ -162,6 +442,11 @@ function createStudent() {
     chemistry
   );
 
+  let isValid = validate();
+  // isValid là false => form không hợp lệ => không cho phép tạo student bằng cách kết thúc hàm
+  if (!isValid) {
+    return;
+  }
   dsPerson.addPerson(student);
   renderStudent();
 }
@@ -176,6 +461,11 @@ function createEmployee() {
 
   let employee = new Employee(name1, address1, code1, email1, day, salary);
 
+  let isValid = validateEP();
+  // isValid là false => form không hợp lệ => không cho phép tạo student bằng cách kết thúc hàm
+  if (!isValid) {
+    return;
+  }
   dsPerson1.addPerson(employee);
   renderEmployee();
 }
@@ -198,6 +488,12 @@ function createCustomer() {
     bill,
     estimate
   );
+
+  let isValid = validateCS();
+  // isValid là false => form không hợp lệ => không cho phép tạo student bằng cách kết thúc hàm
+  if (!isValid) {
+    return;
+  }
   dsPerson2.addPerson(customer);
   renderCustomer();
 }
@@ -284,6 +580,13 @@ function updateStudent(studentCode) {
     physic,
     chemistry
   );
+
+  let isValid = validate();
+  // isValid là false => form không hợp lệ => không cho phép tạo student bằng cách kết thúc hàm
+  if (!isValid) {
+    return;
+  }
+
   dsPerson.updatePerson(studentCode, student);
   renderStudent();
 }
@@ -296,6 +599,13 @@ function updateEmployee(studentCode) {
   let salary = getElement("#salary-day").value;
 
   let employee = new Employee(name, address, code, email, day, salary);
+
+  let isValid = validateEP();
+  // isValid là false => form không hợp lệ => không cho phép tạo student bằng cách kết thúc hàm
+  if (!isValid) {
+    return;
+  }
+
   dsPerson1.updatePerson(studentCode, employee);
   renderEmployee();
 }
@@ -317,6 +627,13 @@ function updateCustomer(studentCode) {
     bill,
     estimate
   );
+
+  let isValid = validateCS();
+  // isValid là false => form không hợp lệ => không cho phép tạo student bằng cách kết thúc hàm
+  if (!isValid) {
+    return;
+  }
+
   dsPerson2.updatePerson(studentCode, customer);
   renderCustomer();
 }
