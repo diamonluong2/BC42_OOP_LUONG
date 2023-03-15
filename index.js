@@ -20,10 +20,19 @@ function deleteCustomer(item) {
 function sortbyName() {
   let isName = getElement("#sort-name").value;
   if (isName === "true") {
-    dsPerson.sortPerson();
+    dsPerson.sortPerson(true);
+    dsPerson1.sortPerson(true);
+    dsPerson2.sortPerson(true);
     renderStudent();
-  } else if (isName === "") {
+    renderCustomer();
+    renderEmployee();
+  } else if (isName === "false") {
+    dsPerson.sortPerson(false);
+    dsPerson1.sortPerson(false);
+    dsPerson2.sortPerson(false);
     renderStudent();
+    renderCustomer();
+    renderEmployee();
   }
 }
 
@@ -46,8 +55,6 @@ function renderStudent() {
             <td>
             <button
             class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#myModal-CS"
             onclick="selectStudentToUpdate('${item.code}')"
           >
             Chỉnh sửa
@@ -82,7 +89,7 @@ function renderEmployee() {
           <td>
           <button
           class="btn btn-primary"
-          onclick="selectStudentToUpdate('${item.code}')"
+          onclick="selectEmployeeToUpdate('${item.code}')"
         >
           Chỉnh sửa
           </button>
@@ -118,7 +125,7 @@ function renderCustomer() {
             <td>
             <button
             class="btn btn-primary"
-            onclick="selectStudentToUpdate('${item.code}')"
+            onclick="selectCustomerToUpdate('${item.code}')"
           >
             Chỉnh sửa
             </button>
@@ -217,7 +224,102 @@ function selectStudentToUpdate(studentID) {
   $("#myModal-ST").modal("show");
 }
 
-function updateStudent(studentCode) {}
+function selectEmployeeToUpdate(studentID) {
+  let listST = dsPerson1.persons;
+  let selectedAccount = listST.find((student) => {
+    return student.code === studentID;
+  });
+  // Lấy thông tin của sinh viên tìm được để fill lên form
+  getElement("#TenST").value = selectedAccount.name;
+  getElement("#diachiST").value = selectedAccount.address;
+  getElement("#maST").value = selectedAccount.code;
+  getElement("#emailST").value = selectedAccount.email;
+  getElement("#count-day").value = selectedAccount.day;
+  getElement("#salary-day").value = selectedAccount.salaryperday;
+
+  getElement("#header-EP").innerHTML = "Cập nhật sản phẩm";
+  getElement("#footer-EP").innerHTML = `
+  <button class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+  <button class="btn btn-primary" onclick="updateEmployee('${selectedAccount.code}')">Cập nhật</button>
+`;
+  $("#myModal-EP").modal("show");
+}
+function selectCustomerToUpdate(studentID) {
+  let listST = dsPerson2.persons;
+  let selectedAccount = listST.find((student) => {
+    return student.code === studentID;
+  });
+  // Lấy thông tin của sinh viên tìm được để fill lên form
+  getElement("#TenST").value = selectedAccount.name;
+  getElement("#diachiST").value = selectedAccount.address;
+  getElement("#maST").value = selectedAccount.code;
+  getElement("#emailST").value = selectedAccount.email;
+  getElement("#tenCTY").value = selectedAccount.nameCompany;
+  getElement("#giaHoaDon").value = selectedAccount.bill;
+  getElement("#danhgia").value = selectedAccount.estimate;
+
+  getElement("#header-CS").innerHTML = "Cập nhật sản phẩm";
+  getElement("#footer-CS").innerHTML = `
+  <button class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+  <button class="btn btn-primary" onclick="updateCustomer('${selectedAccount.code}')">Cập nhật</button>
+`;
+  $("#myModal-CS").modal("show");
+}
+
+function updateStudent(studentCode) {
+  let name = getElement("#TenST").value;
+  let address = getElement("#diachiST").value;
+  let code = getElement("#maST").value;
+  let email = getElement("#emailST").value;
+  let math = +getElement("#diemToan").value;
+  let physic = +getElement("#diemLy").value;
+  let chemistry = +getElement("#diemHoa").value;
+
+  let student = new Student(
+    name,
+    address,
+    code,
+    email,
+    math,
+    physic,
+    chemistry
+  );
+  dsPerson.updatePerson(studentCode, student);
+  renderStudent();
+}
+function updateEmployee(studentCode) {
+  let name = getElement("#TenST").value;
+  let address = getElement("#diachiST").value;
+  let code = getElement("#maST").value;
+  let email = getElement("#emailST").value;
+  let day = getElement("#count-day").value;
+  let salary = getElement("#salary-day").value;
+
+  let employee = new Employee(name, address, code, email, day, salary);
+  dsPerson1.updatePerson(studentCode, employee);
+  renderEmployee();
+}
+function updateCustomer(studentCode) {
+  let name2 = getElement("#TenCS").value;
+  let address2 = getElement("#diachiCS").value;
+  let code2 = getElement("#maCS").value;
+  let email2 = getElement("#emailCS").value;
+  let nameCty = getElement("#tenCTY").value;
+  let bill = getElement("#giaHoaDon").value;
+  let estimate = getElement("#danhgia").value;
+
+  let customer = new Customer(
+    name2,
+    address2,
+    code2,
+    email2,
+    nameCty,
+    bill,
+    estimate
+  );
+  dsPerson2.updatePerson(studentCode, customer);
+  renderCustomer();
+}
 
 document.getElementById("btnThemST").addEventListener("click", () => {
   getElement(".modal-title").innerHTML = "Thêm học sinh";

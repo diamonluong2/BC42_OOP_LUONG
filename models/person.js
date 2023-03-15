@@ -73,14 +73,15 @@ class listPerson {
       this.persons[index] = update;
     }
   }
-  sortPerson() {
-    console.log("CHuỗi là:", this.persons);
-    this.persons = this.persons.sort((personsA, personB) => {
+  sortPerson(asc = true) {
+    return this.persons.sort((personsA, personB) => {
       let firstToken = personsA.name.split(" ");
-      console.log("personsA:", firstToken);
       let secondToken = personB.name.split(" ");
-      console.log("personsB:", secondToken);
-      return firstToken[0].localeCompare(secondToken[0]);
+      if (asc) {
+        return firstToken[0].localeCompare(secondToken[0]);
+      } else {
+        return secondToken[0].localeCompare(firstToken[0]);
+      }
     });
   }
 }
